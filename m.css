@@ -4,10 +4,12 @@
     width: 100%;
 
 }
+
 .el {
     display: table-cell;
     vertical-align: top;
 }
+
 .el img {
     display: block;
     width: 100%;
