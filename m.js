@@ -27,6 +27,8 @@ files={
     '9':'img/match9.png',
     '+':'img/matchplus.png',
     '-':'img/matchsub.png',
+    '/':'img/matchdiv.png',
+    '*':'img/matchmul.png',
     '=':'img/matcheq.png',
 
 };
