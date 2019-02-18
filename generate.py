@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import random
 import sys
 repl_match = [['0', '6', '9'], ['2', '3'], ['3', '2', '5'], ['4', '11'], ['5', '3'], ['6', '0', '9'], ['9', '0', '6'],
@@ -66,9 +67,8 @@ while len(tasks) == 0:
                 changed_str = changed_str.replace('/', '//')
                 eq_parts = changed_str.split('=')
                 try:
-                    eval(eq_parts[0])
-                    eval(eq_parts[1])
-                    tasks.append(changed_str.replace('//', '/'))
+                    if eval(eq_parts[0]) != eval(eq_parts[1]):
+                        tasks.append(changed_str.replace('//', '/'))
                 except:
                     pass
             cur_num = expr.find(j[0], cur_num + 1)
@@ -86,9 +86,8 @@ while len(tasks) == 0:
                                 changed_str2 = changed_str2.replace('/', '//')
                                 eq_parts = changed_str2.split('=')
                                 try:
-                                    eval(eq_parts[0])
-                                    eval(eq_parts[1])
-                                    tasks.append(changed_str2.replace('//', '/'))
+                                    if eval(eq_parts[0]) != eval(eq_parts[1]):
+                                        tasks.append(changed_str2.replace('//', '/'))
                                 except:
                                     pass
                         cur_num2 = expr.find(l[0], cur_num2 + 1)

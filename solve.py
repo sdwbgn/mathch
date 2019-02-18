@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+import json
 import sys
 repl_match = [['0', '6', '9'], ['2', '3'], ['3', '2', '5'], ['4', '11'], ['5', '3'], ['6', '0', '9'], ['9', '0', '6'],
               ['11', '4'], ['-', '/'], ['/', '-']]
@@ -68,4 +70,4 @@ for j in rem_match:
         cur_num = expr.find(j[0], cur_num + 1)
 
 # print solutions
-print(solutions)
+print(json.dumps(solutions))
