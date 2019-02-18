@@ -45,7 +45,7 @@ function getgame(val) {
             if (current_exp[i] in files)
                 $('#expr').append('<div class="el"><img src="' + files[current_exp[i]] + '" /></div>');
         }
-        $('#game').append('<div id="sendans" class="px-5 mx-md-5 my-4"><div class="input-group"><input id="ans" type="text" class="form-control" placeholder="Answer" onkeydown="return checkChar(event);"><div class="input-group-append"><button id="send" class="btn btn-success" type="submit">Send</button></div></div></div><button id="abandon" class="btn btn-danger">Abandon</button>');
+        $('#game').append('<div id="sendans" class="px-md-5 mx-md-5 my-4"><div class="input-group"><input id="ans" type="text" class="form-control" placeholder="Answer" onkeydown="return checkChar(event);"><div class="input-group-append"><button id="send" class="btn btn-success" type="submit">Send</button></div></div></div><button id="abandon" class="btn btn-danger">Abandon</button>');
         $('#collapse').collapse('show');
         $('#send').on('click', function (e) {
             if ($('#ans').prop('disabled') === true) return;
