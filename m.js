@@ -1,20 +1,6 @@
-$('#begin').collapse({toggle: false});
-$('#collapse').collapse({toggle: false});
-$('#al').collapse({toggle: false});
+aspeed=300;
 
-function disable() {
-    $('#easy').addClass('disabled');
-    $('#medium').addClass('disabled');
-    $('#hard').addClass('disabled');
-    $('#al').collapse('hide');
-}
-
-function enable() {
-    $('#easy').removeClass('disabled');
-    $('#medium').removeClass('disabled');
-    $('#hard').removeClass('disabled');
-}
-
+img_cache= new Array();
 current_exp = '';
 allowedChars = '0123456789+=-*/'
 files = {
@@ -35,6 +21,23 @@ files = {
     '=': 'img/matcheq.png',
 
 };
+for (var i = 0; i < allowedChars.length; i++) {
+    img_cache[i]=new Image();
+    img_cache[i].src=files[allowedChars[i]];
+}
+
+function disable() {
+    $('#easy').addClass('disabled');
+    $('#medium').addClass('disabled');
+    $('#hard').addClass('disabled');
+    $('#al').slideUp(aspeed);
+}
+
+function enable() {
+    $('#easy').removeClass('disabled');
+    $('#medium').removeClass('disabled');
+    $('#hard').removeClass('disabled');
+}
 
 function getgame(val) {
     $('#spin').show();
@@ -46,7 +49,6 @@ function getgame(val) {
                 $('#expr').append('<div class="el"><img src="' + files[current_exp[i]] + '" /></div>');
         }
         $('#game').append('<div id="sendans" class="px-md-5 mx-md-5 my-4"><div class="input-group"><input id="ans" type="text" class="form-control" placeholder="Answer" onkeydown="return checkChar(event);"><div class="input-group-append"><button id="send" class="btn btn-success" type="submit">Send</button></div></div></div><button id="abandon" class="btn btn-danger">Abandon</button>');
-        $('#collapse').collapse('show');
         $('#send').on('click', function (e) {
             if ($('#ans').prop('disabled') === true) return;
             $('#ans').prop('disabled', true);
@@ -54,10 +56,11 @@ function getgame(val) {
             $.post('check.php', {ans: $('#ans').val(), eq: current_exp}, function (data, status) {
                 if (data == 1) {
                     cleangame();
-                    $('#al').text("You solved it!").addClass("alert-success").collapse('show');
+
+                    $('#al').removeClass("alert-danger").text("You solved it!").addClass("alert-success").slideDown('show');
 
                 } else {
-                    $('#al').text("Try again!").addClass("alert-danger").collapse('show');
+                    $('#al').removeClass("alert-success").text("Try again!").addClass("alert-danger").slideDown('show');
                     $('#ans').val("");
                     $('#ans').prop('disabled', false);
                     $('#send').prop('disabled', false);
@@ -69,17 +72,19 @@ function getgame(val) {
             cleangame();
         });
         $('#spin').hide();
+        $('#collapse').slideDown(aspeed);
     });
 }
 
 function cleangame() {
-    $('#game').collapse('hide');
-    $('#sendans').remove();
-    $('#abandon').remove();
-    $('#expr').empty();
-    current_exp = '';
-    $('#begin').collapse('show');
-    enable();
+    $('#collapse').slideUp(aspeed,function () {
+        $('#sendans').remove().delay(1000);
+        $('#abandon').remove().delay(1000);
+        $('#expr').empty().delay(1000);
+        current_exp = '';
+        $('#begin').slideDown(aspeed);
+        enable();
+    });
 }
 
 function checkChar(event) {
@@ -92,18 +97,18 @@ function checkChar(event) {
 $('#easy').on('click', function (e) {
     if ($('#easy').hasClass('disabled')) return;
     disable();
-    $('#begin').collapse('hide');
+    $('#begin').slideUp(aspeed);
     getgame(1);
 });
 $('#medium').on('click', function (e) {
     if ($('#easy').hasClass('disabled')) return;
     disable();
-    $('#begin').collapse('hide');
+    $('#begin').slideUp(aspeed);
     getgame(2);
 });
 $('#hard').on('click', function (e) {
     if ($('#hard').hasClass('disabled')) return;
     disable();
-    $('#begin').collapse('hide');
+    $('#begin').slideUp(aspeed);
     getgame(3);
 });
