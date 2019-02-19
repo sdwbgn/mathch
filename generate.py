@@ -63,7 +63,7 @@ while len(tasks) == 0:
         cur_num = expr.find(j[0])
         while cur_num != -1:
             for k in range(1, len(j)):
-                changed_str = expr[:cur_num] + j[k] + expr[cur_num + 1:]
+                changed_str = expr[:cur_num] + j[k] + expr[cur_num + len(j[0]):]
                 changed_str = changed_str.replace('/', '//')
                 eq_parts = changed_str.split('=')
                 try:
@@ -76,13 +76,13 @@ while len(tasks) == 0:
         cur_num = expr.find(j[0])
         while cur_num != -1:
             for k in range(1, len(j)):
-                changed_str = expr[:cur_num] + j[k] + expr[cur_num + 1:]
+                changed_str = expr[:cur_num] + j[k] + expr[cur_num + len(j[0]):]
                 for l in add_match:
                     cur_num2 = expr.find(l[0])
                     while cur_num2 != -1:
                         for m in range(1, len(l)):
                             if cur_num2 != cur_num:
-                                changed_str2 = changed_str[:cur_num2] + l[m] + changed_str[cur_num2 + 1:]
+                                changed_str2 = changed_str[:cur_num2] + l[m] + changed_str[cur_num2 + len(l[0]):]
                                 changed_str2 = changed_str2.replace('/', '//')
                                 eq_parts = changed_str2.split('=')
                                 try:
