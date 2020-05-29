@@ -23,7 +23,7 @@ func main() {
 	mux.HandleFunc("/check", CheckSolution)
 	mux.HandleFunc("/", Gzip(LoadHTML))
 	server := &http.Server{
-		Addr:    ":801",
+		Addr:    ":80",
 		Handler: mux,
 	}
 	wg := new(sync.WaitGroup)
