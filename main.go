@@ -26,7 +26,7 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/get", NewRiddle)
 	mux.HandleFunc("/check", CheckSolution)
-	mux.HandleFunc("/", Gzip(LoadHTML))
+	mux.HandleFunc("/", LoadHTML)
 	server := &http.Server{
 		Addr:    ":" + port,
 		Handler: mux,
