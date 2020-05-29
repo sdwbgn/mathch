@@ -3,6 +3,7 @@ package mathch
 import (
 	"context"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"os/signal"
@@ -14,6 +15,10 @@ import (
 var ETag string
 
 func main() {
+	port := os.Getenv("PORT")
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
 	ETag = strconv.Itoa(int(Init()))
 	//test()
 	signals := make(chan os.Signal, 1)
@@ -23,7 +28,7 @@ func main() {
 	mux.HandleFunc("/check", CheckSolution)
 	mux.HandleFunc("/", Gzip(LoadHTML))
 	server := &http.Server{
-		Addr:    ":80",
+		Addr:    ":" + port,
 		Handler: mux,
 	}
 	wg := new(sync.WaitGroup)
