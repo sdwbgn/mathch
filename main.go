@@ -15,7 +15,7 @@ var ETag string
 
 func main() {
 	ETag = strconv.Itoa(int(Init()))
-	test()
+	//test()
 	signals := make(chan os.Signal, 1)
 	signal.Notify(signals, syscall.SIGINT, syscall.SIGTERM)
 	mux := http.NewServeMux()
