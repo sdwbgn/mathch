@@ -26,6 +26,7 @@
 
 [metadata.heroku]
   root-package = "mathch"
+  install = [ "./..."]
 
 [prune]
   go-tests = true
