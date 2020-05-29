@@ -24,7 +24,7 @@ files = {
 for (var i = 0; i < allowedChars.length; i++) {
     img_cache[i]=new Image();
     if (isSafari) {
-        files[allowedChars[i]].replace(".webp",".jp2")
+        files[allowedChars[i]]=files[allowedChars[i]].replace(".webp",".jp2")
     }
     img_cache[i].src=files[allowedChars[i]];
 }
