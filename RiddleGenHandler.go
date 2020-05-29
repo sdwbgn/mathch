@@ -1,4 +1,4 @@
-package mathch
+package main
 
 import (
 	"fmt"
