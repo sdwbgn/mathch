@@ -79,3 +79,13 @@ func Gzip(handle func(http.ResponseWriter, *http.Request)) func(http.ResponseWri
 		handle(gzw, r)
 	}
 }
+
+func HTTPStoHTTP(handle func(http.ResponseWriter, *http.Request)) func(http.ResponseWriter, *http.Request) {
+	return func(writer http.ResponseWriter, request *http.Request) {
+		if request.URL.Scheme != "https" {
+			http.Redirect(writer, request, strings.Replace(request.URL.String(), request.URL.Scheme, "https", 1), http.StatusMovedPermanently)
+			return
+		}
+		handle(writer, request)
+	}
+}
