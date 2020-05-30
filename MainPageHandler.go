@@ -31,6 +31,10 @@ func LoadHTML(writer http.ResponseWriter, request *http.Request) {
 		http.ServeFile(writer, request, "./js/jquery-3.5.1.min.js")
 	case "/js/popper.min.js":
 		http.ServeFile(writer, request, "./js/popper.min.js")
+	case "/js/wasm_exec.js":
+		http.ServeFile(writer, request, "./js/wasm_exec.js")
+	case "/sw.js":
+		http.ServeFile(writer, request, "./js/sw.js")
 	case "/css/m.css":
 		http.ServeFile(writer, request, "./css/m.css")
 	case "/css/bootstrap.min.css":
@@ -39,6 +43,16 @@ func LoadHTML(writer http.ResponseWriter, request *http.Request) {
 		http.ServeFile(writer, request, "./static/titillium-web-latin-ext.woff2")
 	case "/static/titillium-web-latin.woff2":
 		http.ServeFile(writer, request, "./static/titillium-web-latin.woff2")
+	case "/wasm/main.wasm":
+		http.ServeFile(writer, request, "./wasm/main.wasm")
+	case "/manifest.webmanifest":
+		http.ServeFile(writer, request, "./manifest.webmanifest")
+	case "/favicon.ico":
+		http.ServeFile(writer, request, "./img/favicon.ico")
+	case "/favicon-16x16.png":
+		http.ServeFile(writer, request, "./img/favicon-16x16.png")
+	case "/favicon-32x32.png":
+		http.ServeFile(writer, request, "./img/favicon-32x32.png")
 	default:
 		http.NotFound(writer, request)
 	}

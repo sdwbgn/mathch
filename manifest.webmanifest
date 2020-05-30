@@ -1,0 +1,22 @@
+{
+  "short_name": "MAThCH",
+  "name": "MAThCH: Move-A-Match Math Game",
+  "description": "Move a match to fix an equation",
+  "icons": [
+    {
+      "src": "/img/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/img/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#F8F9FA",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#F8F9FA"
+}
