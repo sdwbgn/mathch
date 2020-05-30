@@ -25,26 +25,18 @@ func LoadHTML(writer http.ResponseWriter, request *http.Request) {
 		}
 	case "/js/m.js":
 		http.ServeFile(writer, request, "./js/m.js")
-	case "/js/bootstrap.min.js":
-		http.ServeFile(writer, request, "./js/bootstrap.min.js")
 	case "/js/jquery-3.5.1.min.js":
 		http.ServeFile(writer, request, "./js/jquery-3.5.1.min.js")
-	case "/js/popper.min.js":
-		http.ServeFile(writer, request, "./js/popper.min.js")
 	case "/js/wasm_exec.js":
 		http.ServeFile(writer, request, "./js/wasm_exec.js")
 	case "/sw.js":
 		http.ServeFile(writer, request, "./js/sw.js")
 	case "/css/m.css":
 		http.ServeFile(writer, request, "./css/m.css")
-	case "/css/bootstrap.min.css":
-		http.ServeFile(writer, request, "./css/bootstrap.min.css")
 	case "/static/titillium-web-latin-ext.woff2":
 		http.ServeFile(writer, request, "./static/titillium-web-latin-ext.woff2")
 	case "/static/titillium-web-latin.woff2":
 		http.ServeFile(writer, request, "./static/titillium-web-latin.woff2")
-	case "/wasm/main.wasm":
-		http.ServeFile(writer, request, "./wasm/main.wasm")
 	case "/manifest.webmanifest":
 		http.ServeFile(writer, request, "./manifest.webmanifest")
 	case "/favicon.ico":
