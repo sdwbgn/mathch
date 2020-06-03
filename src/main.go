@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"os/signal"
@@ -14,9 +15,20 @@ import (
 var ETag string
 
 func main() {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "801"
+	var port string
+	if len(os.Args[1:]) == 0 {
+		port = os.Getenv("PORT")
+		if port == "" {
+			port = "801"
+		}
+	} else if len(os.Args[1:]) != 1 {
+		log.Panic("Invalid Arguments")
+	} else {
+		_, err := strconv.Atoi(os.Args[1])
+		if err != nil {
+			log.Panic("Port is not numeric value")
+		}
+		port = os.Args[1]
 	}
 	ETag = strconv.Itoa(int(Init()))
 	//test()
