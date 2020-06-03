@@ -1,7 +1,7 @@
-FROM golang:1.14
+FROM golang:alpine
 
 WORKDIR /go/src/mathch
 COPY . .
 RUN make
 EXPOSE 801
-CMD ["./bin/mathch"]
+CMD ./bin/mathch $PORT
