@@ -2,6 +2,6 @@ FROM golang:alpine
 
 WORKDIR /go/src/mathch
 COPY . .
+RUN apk add --update alpine-sdk
 RUN make
-EXPOSE 801
 CMD ./bin/mathch $PORT
