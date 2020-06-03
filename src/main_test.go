@@ -1,32 +1,32 @@
 package main
 
 import (
-	"errors"
+	"testing"
 )
 
-func test() {
+func TestEngine(t *testing.T) {
 	if !Solve("7+7=111", "7+7=14") {
-		panic(errors.New("test 1 failed"))
+		t.Errorf("Simple Solve Failed: 7+7=111 (Ans: 7+7=14)")
 	}
 	for i := 0; i < 10000; i++ {
 		ex := RandGenerate(1)
 		pp, _ := MoveMatch(ex, true)
 		if len(pp) == 0 {
-			panic(errors.New("unsolvable"))
+			t.Errorf("Couldn't Solve: %v", ex)
 		}
 	}
 	for i := 0; i < 10000; i++ {
 		ex := RandGenerate(2)
 		pp, _ := MoveMatch(ex, true)
 		if len(pp) == 0 {
-			panic(errors.New("unsolvable"))
+			t.Errorf("Couldn't Solve: %v", ex)
 		}
 	}
 	for i := 0; i < 10000; i++ {
 		ex := RandGenerate(3)
 		pp, _ := MoveMatch(ex, true)
 		if len(pp) == 0 {
-			panic(errors.New("unsolvable"))
+			t.Errorf("Couldn't Solve: %v", ex)
 		}
 	}
 

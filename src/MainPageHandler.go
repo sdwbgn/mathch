@@ -24,27 +24,27 @@ func LoadHTML(writer http.ResponseWriter, request *http.Request) {
 			_ = tmpl.ExecuteTemplate(writer, "index", "webp")
 		}
 	case "/js/m.js":
-		http.ServeFile(writer, request, "./js/m.js")
+		http.ServeFile(writer, request, "./static/js/m.js")
 	case "/js/jquery-3.5.1.min.js":
-		http.ServeFile(writer, request, "./js/jquery-3.5.1.min.js")
+		http.ServeFile(writer, request, "./static/js/jquery-3.5.1.min.js")
 	case "/js/wasm_exec.js":
-		http.ServeFile(writer, request, "./js/wasm_exec.js")
+		http.ServeFile(writer, request, "./static/js/wasm_exec.js")
 	case "/sw.js":
-		http.ServeFile(writer, request, "./js/sw.js")
+		http.ServeFile(writer, request, "./static/js/sw.js")
 	case "/css/m.css":
-		http.ServeFile(writer, request, "./css/m.css")
+		http.ServeFile(writer, request, "./static/css/m.css")
 	case "/static/titillium-web-latin-ext.woff2":
-		http.ServeFile(writer, request, "./static/titillium-web-latin-ext.woff2")
+		http.ServeFile(writer, request, "./static/fonts/titillium-web-latin-ext.woff2")
 	case "/static/titillium-web-latin.woff2":
-		http.ServeFile(writer, request, "./static/titillium-web-latin.woff2")
+		http.ServeFile(writer, request, "./static/fonts/titillium-web-latin.woff2")
 	case "/manifest.webmanifest":
-		http.ServeFile(writer, request, "./manifest.webmanifest")
+		http.ServeFile(writer, request, "./static/manifest.webmanifest")
 	case "/favicon.ico":
-		http.ServeFile(writer, request, "./img/favicon.ico")
+		http.ServeFile(writer, request, "./static/img/favicon.ico")
 	case "/favicon-16x16.png":
-		http.ServeFile(writer, request, "./img/favicon-16x16.png")
+		http.ServeFile(writer, request, "./static/img/favicon-16x16.png")
 	case "/favicon-32x32.png":
-		http.ServeFile(writer, request, "./img/favicon-32x32.png")
+		http.ServeFile(writer, request, "./static/img/favicon-32x32.png")
 	default:
 		http.NotFound(writer, request)
 	}
@@ -54,7 +54,7 @@ func LoadHTML(writer http.ResponseWriter, request *http.Request) {
 func LoadImages(writer http.ResponseWriter, request *http.Request) {
 	writer.Header().Set("Cache-Control", "public, max-age=31536000")
 	writer.Header().Set("ETag", ETag)
-	http.ServeFile(writer, request, "."+request.URL.Path)
+	http.ServeFile(writer, request, "./static"+request.URL.Path)
 }
 
 type gzipResponseWriter struct {
