@@ -2,7 +2,7 @@ var CACHE_NAME = 'mathch-cache-v1';
 var urlsToCache = [
     '/',
     '/css/m.css',
-    '/js/cash.min.js',
+    '/js/jquery-3.5.1.min.js',
     '/js/m.js',
     '/img/match0.webp',
     '/img/match1.webp',

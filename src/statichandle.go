@@ -47,8 +47,8 @@ func LoadHTML(writer http.ResponseWriter, request *http.Request) {
 		}
 	case "/js/m.js":
 		http.ServeFile(writer, request, "./static/js/m.js")
-	case "/js/cash.min.js":
-		http.ServeFile(writer, request, "./static/js/cash.min.js")
+	case "/js/jquery-3.5.1.min.js":
+		http.ServeFile(writer, request, "./static/js/jquery-3.5.1.min.js")
 	case "/js/wasm_exec.js":
 		http.ServeFile(writer, request, "./static/js/wasm_exec.js")
 	case "/sw.js":
