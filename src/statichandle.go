@@ -25,17 +25,17 @@ func LoadHTML(writer http.ResponseWriter, request *http.Request) {
 		}
 	case "/js/m.js":
 		http.ServeFile(writer, request, "./static/js/m.js")
-	case "/js/jquery-3.5.1.min.js":
-		http.ServeFile(writer, request, "./static/js/jquery-3.5.1.min.js")
+	case "/js/cash.min.js":
+		http.ServeFile(writer, request, "./static/js/cash.min.js")
 	case "/js/wasm_exec.js":
 		http.ServeFile(writer, request, "./static/js/wasm_exec.js")
 	case "/sw.js":
 		http.ServeFile(writer, request, "./static/js/sw.js")
 	case "/css/m.css":
 		http.ServeFile(writer, request, "./static/css/m.css")
-	case "/static/titillium-web-latin-ext.woff2":
+	case "/fonts/titillium-web-latin-ext.woff2":
 		http.ServeFile(writer, request, "./static/fonts/titillium-web-latin-ext.woff2")
-	case "/static/titillium-web-latin.woff2":
+	case "/fonts/titillium-web-latin.woff2":
 		http.ServeFile(writer, request, "./static/fonts/titillium-web-latin.woff2")
 	case "/manifest.webmanifest":
 		http.ServeFile(writer, request, "./static/manifest.webmanifest")

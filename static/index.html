@@ -7,21 +7,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="MAThCH game. Move one match and fix an equation.">
-    <link rel="preload" href="/css/m.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/css/m.css"></noscript>
-    <link rel="manifest" href="/manifest.webmanifest">
-    <script src="/js/jquery-3.5.1.min.js" defer="defer"></script>
-    <script src="/js/m.js" defer="defer"></script>
-    <link rel="apple-touch-icon" href="/img/icon-192.png">
+    <link rel="preload" href="css/m.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/m.css"></noscript>
+    <link rel="manifest" href="manifest.webmanifest">
+    <script src="js/cash.min.js" defer="defer"></script>
+    <script src="js/m.js" defer="defer"></script>
+    <link rel="apple-touch-icon" href="img/icon-192.png">
     <meta name="theme-color" content="#F8F9FA"/>
 </head>
-<body class="bg-light">
+<body class="bg-light" style="display: none">
 <div class="container">
-    <img class="logo" src="/img/matchlogo.{{.}}" alt="" width="300">
+    <img class="logo" src="img/matchlogo.{{.}}" alt="" width="300">
     <p class="text-center">Move one match and fix an equation</p>
-    <div id="al" class="alert" style="display: none;" role="alert">
+    <div id="alert-box" class="alert hidden">
+        <div id="alert">
+
+        </div>
     </div>
-    <div id="begin" class="text-center collapse show">
+    <div id="begin" class="text-center">
         <div class="diff-select">
             <button id="easy" type="button" class="btn btn-secondary">Easy</button>
             <button id="medium" type="button" class="btn btn-secondary">Medium</button>
@@ -31,7 +34,7 @@
     <div id="spin" class="loader">
         Loading...
     </div>
-    <div id="collapse">
+    <div id="collapse" class="hidden">
         <div id="game">
             <div id="expr">
             </div>
