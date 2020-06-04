@@ -5,8 +5,30 @@ import (
 	"html/template"
 	"io"
 	"net/http"
+	"os"
 	"strings"
 )
+
+var getenv = os.Getenv
+
+const (
+	xForwardedProtoHeader = "x-forwarded-proto"
+	goEnviron             = "GO_ENV"
+)
+
+func ForceSsl(handle func(http.ResponseWriter, *http.Request)) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if getenv(goEnviron) == "production" {
+			if r.Header.Get(xForwardedProtoHeader) != "https" {
+				sslUrl := "https://" + r.Host + r.RequestURI
+				http.Redirect(w, r, sslUrl, http.StatusTemporaryRedirect)
+				return
+			}
+		}
+
+		handle(w, r)
+	}
+}
 
 func LoadHTML(writer http.ResponseWriter, request *http.Request) {
 	writer.Header().Set("Cache-Control", "public, max-age=31536000")
