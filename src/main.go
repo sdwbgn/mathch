@@ -35,9 +35,9 @@ func main() {
 	signals := make(chan os.Signal, 1)
 	signal.Notify(signals, syscall.SIGINT, syscall.SIGTERM)
 	mux := http.NewServeMux()
-	mux.HandleFunc("/get", NewRiddle)
-	mux.HandleFunc("/check", CheckSolution)
-	mux.HandleFunc("/", LoadHTML)
+	mux.HandleFunc("/get", Gzip(NewRiddle))
+	mux.HandleFunc("/check", Gzip(CheckSolution))
+	mux.HandleFunc("/", Gzip(LoadHTML))
 	server := &http.Server{
 		Addr:    ":" + port,
 		Handler: mux,
